@@ -1,0 +1,17 @@
+{
+  "name": "junction-move",
+  "version": "1.0.0",
+  "description": "Move a folder to new location and make a Juction link to new location. Only works with windows yet. ",
+  "main": "cli.js",
+  "keywords": [
+    "junction",
+    "windows"
+  ],
+  "author": "snomiao@gmail.com",
+  "repository": "git://github.com/snomiao/junction-move.git",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^16.0.3"
+  },
+  "bin": "cli.js"
+}
