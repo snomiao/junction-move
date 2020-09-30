@@ -12,7 +12,7 @@ async function main() {
     await promisify(exec)(`chcp 65001`);
     // READING PARAMS
     const argv = require('yargs')
-        .usage('Usage: npx junction-move from_folder to_folder')
+        .usage('Usage: npx junction-move source_folder target_folder')
         .example('junction-move C:\\Go D:\\Go')
         .example('npx junction-move C:\\Go D:\\Go')
         .help('h').alias('h', 'help')
@@ -20,13 +20,20 @@ async function main() {
         .argv;
 
     if (argv._.length !== 2) {
-        console.log('Expected 2 arguments but got ', argv._.length, ", you can use -h to learn why.")
+        console.error('Expected 2 arguments but got ', argv._.length, ", you can use -h to learn why.")
+        console.error('Got arguments: ', argv._)
+        console.error('Extra notice: npx junction-move ... dont support the path with spaces yet even you have included them in ".." ')
+        console.error('If you want to solve that you can type "npm install junction-move -g" and then use just "junction-move source_folder target_folder" to handle this.')
         return 'FAIL'
     }
 
-    const [from, to] = argv._
-    try { execSync(`robocopy "${from}" "${to}" /MOVE /e `, { stdio: 'inherit' }) } catch (e) { }
-    try { execSync(`mklink /J "${from}" "${to}"`, { stdio: 'inherit' }) } catch (e) { }
+    const [source, target] = argv._
+    try { execSync(`robocopy "${source}" "${target}" /MOVE /e `, { stdio: 'inherit' }) } catch (e) {
+        console.error("robocopy FAILS, make sure you have the permission to access the source folder")
+    }
+    try { execSync(`mklink /J "${source}" "${target}"`, { stdio: 'inherit' }) } catch (e) {
+        console.error("mklink FAILS, make sure you have the permission to access the source folder")
+    }
     return 'done';
 }
 module.exports = main
