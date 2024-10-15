@@ -11,7 +11,7 @@
   "repository": "git://github.com/snomiao/junction-move.git",
   "license": "ISC",
   "dependencies": {
-    "yargs": "^16.0.3"
+    "yargs": "^16.2.0"
   },
   "bin": "cli.js"
 }
