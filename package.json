@@ -1,7 +1,7 @@
 {
   "name": "junction-move",
   "version": "1.2.0",
-  "description": "Move a folder to new location and make a Juction link to new location. Only works with windows yet. ",
+  "description": "Free up C: drive space by moving heavy folders to HDD and mounting back via junction links — all software keeps working seamlessly. Windows only.",
   "main": "cli.js",
   "keywords": [
     "junction",
